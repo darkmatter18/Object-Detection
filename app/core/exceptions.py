@@ -1,5 +1,6 @@
 import logging
 from fastapi.requests import Request
+from fastapi.responses import JSONResponse
 
 
 logger = logging.getLogger(__name__)
@@ -20,6 +21,11 @@ class APIException(Exception):
 
     def __str__(self):
         return f"APIException(status_code={self.status_code}, detail={self.message})"
+    
+    @staticmethod
+    async def handler(request: Request, exception: 'APIException') -> JSONResponse:
+        content = {"detail": exception.detail, "message": exception.message, "error_code": exception.error_code}
+        return JSONResponse(content, status_code=exception.status_code)
 
 
 async def log_request_info(request: Request):

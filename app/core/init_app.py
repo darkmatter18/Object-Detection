@@ -4,6 +4,7 @@ from fastapi.middleware.gzip import GZipMiddleware
 
 
 from app.settings.config import settings
+from app.core.exceptions import APIException
 
 
 def init_middlewares(app: FastAPI):
@@ -23,4 +24,4 @@ def init_middlewares(app: FastAPI):
 
 
 def register_exceptions(app: FastAPI):
-    pass
+    app.add_exception_handler(APIException, APIException.handler)
