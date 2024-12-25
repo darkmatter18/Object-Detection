@@ -32,5 +32,8 @@ class Settings:
     CORS_ALLOW_METHODS = ["*"]
     CORS_ALLOW_HEADERS = ["*"]
 
+    CELERY_BROKER_URI = "redis://redis"
+    CELERY_BACKEND_URI = "redis://redis"
+
 
 settings = Settings()
