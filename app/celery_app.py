@@ -31,6 +31,7 @@ app = Celery(
     broker=settings.CELERY_BROKER_URI,
 )
 app.config_from_object(Config)
+app.autodiscover_tasks(["app.services.detect"])
 print(
     f">>> celery_app: {settings.CELERY_BACKEND_URI}, {settings.CELERY_BROKER_URI}"
 )
