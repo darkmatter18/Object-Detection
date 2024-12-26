@@ -2,7 +2,7 @@ import os
 from dotenv import dotenv_values
 
 
-def get_env(is_local: bool, dir: str) -> dict[str, str | None]:
+def get_env(is_local: bool, dir: str):
     """ Get the environment variables
 
     Args:
