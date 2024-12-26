@@ -18,6 +18,6 @@ async def detect_video(video: UploadFile) -> schemas.DetectionRequestResponse:
     return await services.detect_service.detect(video=await video.read(), content_type=video.content_type)
 
 
-@router.post("/{detection_id}", description="Check if the processing is done or not")
+@router.get("/{detection_id}", description="Check if the processing is done or not")
 async def check_detection(detection_id: Annotated[UUID, Path(description="Detection ID")]):
     return await services.detect_service.check_detection(detection_id=detection_id)
