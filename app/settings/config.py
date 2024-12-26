@@ -4,12 +4,12 @@ from app.utils import get_env
 
 class Settings:
     # Basic Application Information
-    APP_TITLE = "AgWise App"
-    PROJECT_NAME = "AgWise App Frontend Service"
-    APP_DESCRIPTION = "AgWise App Frontend Service. Maintained by AgWise"
+    APP_TITLE = "Object Detection"
+    PROJECT_NAME = "Object Detection Service"
+    APP_DESCRIPTION = "Object Detection Service"
     CONTACT = {
         "name": "Arkadip Bhattacharya",
-        "email": "arkadip.bhattacharya@nimblework.com",
+        "email": "hi@arkadip.dev",
     }
 
     DEBUG = not (os.getenv("ENV") == "PROD")

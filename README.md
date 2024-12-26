@@ -1,8 +1,18 @@
 # Object Detection
 
+
 ## Introduction
 
 This project is a simple object detection project using the Detectron2 library.
+
+
+## Tools
+
+1. FastAPI (for API)
+2. Celery (for async tasks)
+3. Redis (for message broker)
+4. Docker (for containerization)
+
 
 ## Usage
 
