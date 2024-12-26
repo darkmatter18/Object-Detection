@@ -12,8 +12,14 @@ class DetectService:
         task: AsyncResult = detection_task.delay(video, content_type)  # type: ignore
         return DetectionRequestResponse(id=UUID(task.id))
 
-    async def check_detection(self):
-        pass
+    async def check_detection(self, detection_id: UUID):
+        result = celery_app.AsyncResult(str(detection_id))
+
+        return {
+            "status": result.status,
+            "result": result.result,
+        }
+
 
 
 @celery_app.task(name="detect")
@@ -21,5 +27,6 @@ def detection_task(video: bytes, content_type: str):
     d = detection.instance()
     video_path = d.save(video, content_type)
     print(video_path)
+    return {'objects': d.detect(video_path)}
 
 detect_service = DetectService()
